@@ -1,6 +1,6 @@
 # useCustomElement React Hook
 
-[![Build Status](https://travis-ci.org/the-road-to-learn-react/use-custom-element.svg?branch=master)](https://travis-ci.org/the-road-to-learn-react/use-custom-element) [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/) [![Greenkeeper badge](https://badges.greenkeeper.io/the-road-to-learn-react/use-custom-element.svg)](https://greenkeeper.io/) [![Coverage Status](https://coveralls.io/repos/github/the-road-to-learn-react/use-custom-element/badge.svg?branch=master)](https://coveralls.io/github/the-road-to-learn-react/use-custom-element?branch=master) ![NPM](https://img.shields.io/npm/l/use-custom-element.svg)
+[![Build Status](https://travis-ci.org/the-road-to-learn-react/use-custom-element.svg?branch=master)](https://travis-ci.org/the-road-to-learn-react/use-custom-element) [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/) [![Greenkeeper badge](https://badges.greenkeeper.io/the-road-to-learn-react/use-custom-element.svg)](https://greenkeeper.io/) ![NPM](https://img.shields.io/npm/l/use-custom-element.svg)
 
 Custom hook to bridge Custom Elements (Web Components) to React.
 
@@ -19,7 +19,7 @@ import React from 'react';
 // install via npm install road-dropdown
 import 'road-dropdown';
 
-import customElementProps from 'use-custom-element';
+import useCustomElement from 'use-custom-element';
 
 const Dropdown = props => {
   const [customElementProps, ref] = useCustomElement(props);
