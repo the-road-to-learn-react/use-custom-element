@@ -4,6 +4,9 @@
 
 Custom hook to bridge Custom Elements (Web Components) to React.
 
+* [Learn how to build Web Components.](https://www.robinwieruch.de/web-components-tutorial)
+* [Learn how to use Web Components in React.](https://www.robinwieruch.de/react-web-components)
+
 ## Installation
 
 `npm install use-custom-element`
