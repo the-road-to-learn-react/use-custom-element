@@ -44,6 +44,37 @@ const props = {
 return <Dropdown {...props} />;
 ```
 
+### Custom Mapping
+
+You can also define a custom mapping:
+
+```
+import React from 'react';
+
+// Web Component Use Case
+// install via npm install road-dropdown
+import 'road-dropdown';
+
+import useCustomElement from 'use-custom-element';
+
+const Dropdown = props => {
+  const [customElementProps, ref] = useCustomElement(props, {
+    option: 'selected',
+    onChange: 'click',
+  });
+
+  console.log(customElementProps);
+
+  // label: "Label"
+  // options: "{"option1":{"label":"Option 1"},"option2":{"label":"Option 2"}}"
+  // selected: "option1"
+
+  // and "onChange" mapped to "click" event for the event listener
+
+  return <my-dropdown {...customElementProps} ref={ref} />;
+};
+```
+
 ## Contribute
 
 * `git clone git@github.com:the-road-to-learn-react/use-custom-element.git`

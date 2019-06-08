@@ -1,14 +1,15 @@
 import React from 'react';
 
-const useCustomElement = props => {
+const useCustomElement = (props, customMapping = {}) => {
   const ref = React.createRef();
 
   React.useLayoutEffect(() => {
     const fns = Object.keys(props)
       .filter(key => props[key] instanceof Function)
       .map(key => ({
-        key,
-        fn: customEvent => props[key](customEvent.detail),
+        key: customMapping[key] || key,
+        fn: customEvent =>
+          props[key](customEvent.detail, customEvent),
       }));
 
     fns.forEach(({ key, fn }) =>
@@ -21,19 +22,19 @@ const useCustomElement = props => {
       );
   }, []);
 
-  const customElementProps = Object.keys(props).reduce((acc, key) => {
-    const prop = props[key];
+  const customElementProps = Object.keys(props)
+    .filter(key => !(props[key] instanceof Function))
+    .reduce((acc, key) => {
+      const prop = props[key];
 
-    if (prop instanceof Object || prop instanceof Array) {
-      return { ...acc, [key]: JSON.stringify(prop) };
-    }
+      const computedKey = customMapping[key] || key;
 
-    if (prop instanceof Function) {
-      return acc;
-    }
+      if (prop instanceof Object || prop instanceof Array) {
+        return { ...acc, [computedKey]: JSON.stringify(prop) };
+      }
 
-    return { ...acc, [key]: prop };
-  }, {});
+      return { ...acc, [computedKey]: prop };
+    }, {});
 
   return [customElementProps, ref];
 };
