@@ -4,9 +4,11 @@ const useCustomElement = (props, customMapping = {}) => {
   const ref = React.createRef();
 
   React.useLayoutEffect(() => {
+    const { current } = ref;
+
     let fns;
 
-    if (ref.current) {
+    if (current) {
       fns = Object.keys(props)
         .filter(key => props[key] instanceof Function)
         .map(key => ({
@@ -15,17 +17,17 @@ const useCustomElement = (props, customMapping = {}) => {
             props[key](customEvent.detail, customEvent),
         }));
 
-      fns.forEach(({ key, fn }) =>
-        ref.current.addEventListener(key, fn),
-      );
+      fns.forEach(({ key, fn }) => current.addEventListener(key, fn));
     }
 
-    return () =>
-      ref.current &&
-      fns.forEach(({ key, fn }) =>
-        ref.current.removeEventListener(key, fn),
-      );
-  }, []);
+    return () => {
+      if (current) {
+        fns.forEach(({ key, fn }) =>
+          current.removeEventListener(key, fn),
+        );
+      }
+    };
+  }, [customMapping, props, ref]);
 
   const customElementProps = Object.keys(props)
     .filter(key => !(props[key] instanceof Function))

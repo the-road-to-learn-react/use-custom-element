@@ -1,6 +1,6 @@
 {
   "name": "use-custom-element",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -22,7 +22,18 @@
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.4.4",
+    "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.5",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-loader": "^2.1.2",
+    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.2",
+    "eslint-plugin-react-hooks": "^1.6.1",
+    "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "webpack": "^4.31.0",
@@ -35,5 +46,6 @@
   "bugs": {
     "url": "https://github.com/the-road-to-learn-react/use-custom-element/issues"
   },
-  "homepage": "https://github.com/the-road-to-learn-react/use-custom-element#readme"
+  "homepage": "https://github.com/the-road-to-learn-react/use-custom-element#readme",
+  "dependencies": {}
 }
