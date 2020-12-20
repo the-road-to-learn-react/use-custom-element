@@ -3,6 +3,7 @@
   "version": "1.0.5",
   "description": "",
   "main": "lib/index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "build": "webpack --config ./webpack.config.js --mode=production",
     "prepare": "npm run build",
