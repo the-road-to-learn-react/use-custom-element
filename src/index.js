@@ -1,14 +1,11 @@
-import React from 'react';
+import { useLayoutEffect, useRef } from 'react';
 
 const useCustomElement = (props, customMapping = {}) => {
-  const ref = React.createRef();
-
-  React.useLayoutEffect(() => {
-    const { current } = ref;
-
+  const ref = useRef(null);
+  useLayoutEffect(() => {
     let fns;
 
-    if (current) {
+    if (ref.current) {
       fns = Object.keys(props)
         .filter(key => props[key] instanceof Function)
         .map(key => ({
@@ -17,13 +14,13 @@ const useCustomElement = (props, customMapping = {}) => {
             props[key](customEvent.detail, customEvent),
         }));
 
-      fns.forEach(({ key, fn }) => current.addEventListener(key, fn));
+      fns.forEach(({ key, fn }) => ref.current.addEventListener(key, fn));
     }
 
     return () => {
-      if (current) {
+      if (ref.current) {
         fns.forEach(({ key, fn }) =>
-          current.removeEventListener(key, fn),
+          ref.current.removeEventListener(key, fn),
         );
       }
     };
