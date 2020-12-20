@@ -39,7 +39,10 @@ const useCustomElement = (props, customMapping = {}) => {
       const computedKey = customMapping[key] || key;
       let value;
 
-      if (React.isValidElement(prop) || (prop instanceof Array && prop.every(React.isValidElement))) {
+      if (
+        React.isValidElement(prop) ||
+        (prop instanceof Array && prop.every(React.isValidElement))
+      ) {
         value = renderToString(prop);
       } else if (prop instanceof Object || prop instanceof Array) {
         value = JSON.stringify(prop);
