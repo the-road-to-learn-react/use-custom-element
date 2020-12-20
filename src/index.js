@@ -1,7 +1,7 @@
 import React from 'react';
 
 const useCustomElement = (props, customMapping = {}) => {
-  const ref = React.createRef();
+  const ref = React.useRef();
 
   React.useLayoutEffect(() => {
     const { current } = ref;
@@ -17,7 +17,9 @@ const useCustomElement = (props, customMapping = {}) => {
             props[key](customEvent.detail, customEvent),
         }));
 
-      fns.forEach(({ key, fn }) => current.addEventListener(key, fn));
+      fns.forEach(({ key, fn }) => {
+        current.addEventListener(key, fn)
+      });
     }
 
     return () => {
